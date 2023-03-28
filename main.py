@@ -11,5 +11,8 @@ for index, row in df.iterrows():
     pdf.set_text_color(100, 100, 100) # RGB
     pdf.cell(w=0, h=12, txt=row['Topic'], align='L', 
             ln=1) # w=0... width=0 extends until end of page. ln=1 makes a break line. h... height should be = font size. border=1 makes a boder around the cell.
-    pdf.line(10, 21, 200, 21) # Requires x1, y1, x2, y2 coordinates. Distance from borders: left, top, left, top respectively
+    pdf.line(10, 21, 200, 21) # Requires x1, y1, x2, y2 coordinates. Distance from borders: left, top, left, top respectively.
+
+    for i in range(row['Pages'] -1):
+        pdf.add_page()
 pdf.output('output.pdf')
